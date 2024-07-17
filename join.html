@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>회원가입</title>
+      <!--부트 스트랩 CSS-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <!--jQuery-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!--Bootstrap JavaScript-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+      <!--꾸미는 부분-->
+      <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+            * {
+                  font-family: "Gowun Dodum", sans-serif;
+            }
+
+            .mytitle {     
+                  width: 300px;
+
+                  border-radius: 10px;
+                  color: white;
+
+                  text-align: center;
+
+                  padding: 10px 0px 20px 0px;
+
+                  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvSZbOCS3U_U-LoQtUMUfx9cI4Nn5MCSnMcg&s');
+                  background-position: center;
+                  background-size: cover;
+            }
+
+            /*조원 추가의 위치를 화면 중간으로*/
+            .wrap {
+                  width: 300px;
+                  margin: 200px auto 0px auto;
+            }
+      </style>
+
+      <script type="module">
+            ////////////////////////////////////////////////////////////////////////////////
+            // Firebase SDK 라이브러리 가져오기
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+            import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+            import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+            import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+            // Firebase 세팅 가져옴
+            const firebaseConfig = {
+                  apiKey: "AIzaSyBvhgeMxJFnExh9RZi193LRpD7ZAIh4UoM",
+                  authDomain: "sparta-6e88c.firebaseapp.com",
+                  projectId: "sparta-6e88c",
+                  storageBucket: "sparta-6e88c.appspot.com",
+                  messagingSenderId: "757403805462",
+                  appId: "1:757403805462:web:2b2536fb8df6afeffb1237"
+            };
+
+            // Firebase 인스턴스 초기화
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            ////////////////////////////////////////////////////////////////////////////////
+            // 데이터 저장하기
+            $("#postingbtn").click(async function () { ////id="postingbtn"를 클릭하면 아래 실행
+                  let name = $('#name').val();
+                  let blog = $('#blog').val();
+                  let mbti = $('#mbti').val();
+                  let tmi = $('#tmi').val();
+
+                  let doc = {
+                        'name': name,
+                        'blog': blog,
+                        'mbti': mbti,
+                        'tmi': tmi,
+                  };//넣고싶은 데이터
+                  await addDoc(collection(db, "members"), doc);
+
+                  alert('저장 완료!');
+                  //window.location.reload();//새로고침
+                  window.location.href = 'intro.html'; // intro.html 페이지로 이동
+            })
+
+
+      </script>
+
+</head>
+
+<body>
+      <!--화면에 보이는 부분-->
+      <div class="wrap">
+            <div class="mytitle">
+                  <h1>조원 추가</h1>
+                  <h5>정보를 입력하세요</h5>
+            </div>
+            <div class="input-group mb-3">
+                  <span class="input-group-text" id="name">NAME</span>
+                  <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                  <span class="input-group-text" id="blog">Blog</span>
+                  <input type="text" class="form-control" placeholder="https://example.com/users/"
+                        aria-label="https://example.com/users/" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                  <span class="input-group-text" id="mbti">MBTI</span>
+                  <input type="text" class="form-control" placeholder="INFJ" aria-label="INFJ"
+                        aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                  <span class="input-group-text" id="tmi">TMI</span>
+                  <input type="text" class="form-control" placeholder="김치찌개는 맛있다" aria-label="김치찌개는 맛있다"
+                        aria-describedby="basic-addon1">
+            </div>
+
+            <button id="postingbtn" type="button" class="btn btn-outline-danger">조원추가</button>
+            
+      </div>
+</body>
+
+</html>
