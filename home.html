@@ -47,7 +47,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         ////////////////////////////////////////////////////////////////////////////////
-        //여기선 불러오면 된다.
+
         let docs = await getDocs(collection(db, "members")); //데이터 읽어오기
         docs.forEach((doc) => {
             let row = doc.data();
@@ -63,6 +63,7 @@
                         <p class="card-text">${mbti}</p>
                         <p class="card-text">${tmi}</p>
                         <a href="${blog}" class="btn btn-primary" target="_blank">Blog</a>
+                        <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             `;
@@ -74,15 +75,8 @@
 </head>
 
 <body>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">이름</h5>
-            <p class="card-text">MBTI</p>
-            <p class="card-text">TMI</p>
-            <button type="button"class="btn btn-primary">Blog</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-        </div>
+    <div id ="card" class="card" style="width: 18rem;">
+       
     </div>
 </body>
 
