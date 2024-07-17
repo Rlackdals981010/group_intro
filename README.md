@@ -28,5 +28,5 @@ BE : firebase 사용
 ## 참고 문서
 [RestAPI??](https://khj93.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-REST-API%EB%9E%80-REST-RESTful%EC%9D%B4%EB%9E%80)
 
-[와이어 프레임 사이트](https://app.moqups.com/unsaved/399fbff7/edit/page/ad64222d5)
+[와이어 프레임 사이트](https://app.moqups.com/)
 
