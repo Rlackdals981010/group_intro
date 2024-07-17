@@ -26,7 +26,49 @@
     </style>
 
     <script type="module">
+        ////////////////////////////////////////////////////////////////////////////////
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
+        // Firebase 세팅 가져옴
+        const firebaseConfig = {
+            apiKey: "AIzaSyBvhgeMxJFnExh9RZi193LRpD7ZAIh4UoM",
+            authDomain: "sparta-6e88c.firebaseapp.com",
+            projectId: "sparta-6e88c",
+            storageBucket: "sparta-6e88c.appspot.com",
+            messagingSenderId: "757403805462",
+            appId: "1:757403805462:web:2b2536fb8df6afeffb1237"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        ////////////////////////////////////////////////////////////////////////////////
+        //여기선 불러오면 된다.
+        let docs = await getDocs(collection(db, "members")); //데이터 읽어오기
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let name = row['name'];
+            let blog = row['blog'];
+            let mbti = row['mbti'];
+            let tmi = row['tmi'];
+
+            let temp_html = `           
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${name}</h5>
+                        <p class="card-text">${mbti}</p>
+                        <p class="card-text">${tmi}</p>
+                        <a href="${blog}" class="btn btn-primary" target="_blank">Blog</a>
+                    </div>
+                </div>
+            `;
+            $('#card').append(temp_html);
+
+        });
     </script>
 
 </head>
@@ -35,12 +77,13 @@
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">이름</h5>
-          <p class="card-text">MBTI</p>
-          <p class="card-text">TMI</p>
-          <a href="#" class="btn btn-primary">Blog</a>
+            <h5 class="card-title">이름</h5>
+            <p class="card-text">MBTI</p>
+            <p class="card-text">TMI</p>
+            <button type="button"class="btn btn-primary">Blog</button>
+            <button type="button" class="btn btn-danger">Delete</button>
         </div>
-      </div>
+    </div>
 </body>
 
 </html>
