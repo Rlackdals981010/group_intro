@@ -17,6 +17,9 @@
 ## 프로젝트 요구사항
 - CRUD 구현
 
+## 와이어 프레임
+![스크린샷 2024-07-17 오전 11.35.00.png](..%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-07-17%20%EC%98%A4%EC%A0%84%2011.35.00.png)
+
 ## 참고 문서
 
 [RestAPI??](https://khj93.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-REST-API%EB%9E%80-REST-RESTful%EC%9D%B4%EB%9E%80)
