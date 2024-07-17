@@ -17,6 +17,11 @@
 ## 프로젝트 요구사항
 - CRUD 구현
 
+## 구성
+FE : HTML, JS, CSS
+
+BE : firebase 사용
+
 ## 와이어 프레임
 ![스크린샷 2024-07-17 오전 11 35 00](https://github.com/user-attachments/assets/ecd56b90-059e-4a67-86ca-2441f791b453)
 
