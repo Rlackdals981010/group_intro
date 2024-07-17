@@ -29,9 +29,7 @@
         ////////////////////////////////////////////////////////////////////////////////
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // Firebase 세팅 가져옴
         const firebaseConfig = {
@@ -48,34 +46,45 @@
         const db = getFirestore(app);
         ////////////////////////////////////////////////////////////////////////////////
 
-        let docs = await getDocs(collection(db, "members")); //데이터 읽어오기
-        docs.forEach((doc) => {
-            let row = doc.data();
-            let name = row['name'];
-            let blog = row['blog'];
-            let mbti = row['mbti'];
-            let tmi = row['tmi'];
+        async function loadMembers() {
+            let docs = await getDocs(collection(db, "members")); // 데이터 읽어오기
+            docs.forEach((doc) => {
+                let row = doc.data();
+                let id = doc.id; // 문서 ID 가져오기
+                let name = row['name'];
+                let blog = row['blog'];
+                let mbti = row['mbti'];
+                let tmi = row['tmi'];
 
-            let temp_html = `           
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <p class="card-text">${mbti}</p>
-                        <p class="card-text">${tmi}</p>
-                        <a href="${blog}" class="btn btn-primary" target="_blank">Blog</a>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                let temp_html = `           
+                    <div class="card" id="${id}" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">${name}</h5>
+                            <p class="card-text">${mbti}</p>
+                            <p class="card-text">${tmi}</p>
+                            <a href="${blog}" class="btn btn-primary" target="_blank">Blog</a>
+                            <button type="button" class="btn btn-danger" onclick="deleteMember('${id}')">Delete</button>
+                        </div>
                     </div>
-                </div>
-            `;
-            $('#card').append(temp_html);
+                `;
+                $('#card').append(temp_html);
+            });
+        }
 
+        window.deleteMember = async function(id) {
+            await deleteDoc(doc(db, "members", id)); // 문서 삭제
+            document.getElementById(id).remove(); // 카드 삭제
+        }
+
+        $(document).ready(function() {
+            loadMembers();
         });
     </script>
 
 </head>
 
 <body>
-    <div id ="card" class="card" style="width: 18rem;">
+    <div id="card" class="card" style="width: 18rem;">
        
     </div>
 </body>
