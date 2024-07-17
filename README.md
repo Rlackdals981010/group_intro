@@ -23,9 +23,10 @@ FE : HTML, JS, CSS
 BE : firebase 사용
 
 ## 와이어 프레임
-![스크린샷 2024-07-17 오전 11 35 00](https://github.com/user-attachments/assets/ecd56b90-059e-4a67-86ca-2441f791b453)
+![스크린샷 2024-07-17 오후 1 06 53](https://github.com/user-attachments/assets/d5ff9a37-4d75-460b-95c2-dbeb0917d882)
 
 ## 참고 문서
 [RestAPI??](https://khj93.tistory.com/entry/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-REST-API%EB%9E%80-REST-RESTful%EC%9D%B4%EB%9E%80)
 
 [와이어 프레임 사이트](https://app.moqups.com/unsaved/399fbff7/edit/page/ad64222d5)
+
