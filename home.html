@@ -25,16 +25,34 @@
         }
 
         body {
-
+            margin: 0;
+            
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
+        .cardspace {
+            background-color: white;
+            
+            display: flex;            
+            align-items: space-between;
+            text-align: center;
+        }
+
         .card {
             
+            height: 300px;
+            text-align: center;
+            box-sizing: border-box;
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
             margin: 15px;
+            
         }
     </style>
 
@@ -98,12 +116,11 @@
 </head>
 
 <body>
+    <div class="cardspace">
+        <div id="card" class="card" style="width: 24 rem;"></div>
+    </div>
 
-        <div id="card" class="card" style="width: 18rem;">
-
-        </div>    
-
-
+    </div>
 </body>
 
 </html>
