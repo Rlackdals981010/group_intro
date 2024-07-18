@@ -24,8 +24,34 @@
             font-family: "Gowun Dodum", sans-serif;
         }
 
+        body {
+            margin: 0;
+            background-color: green;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cardspace {
+            background-color: white;
+            
+            display: flex;            
+            align-items: space-between;
+            text-align: center;
+        }
+
         .card {
-            margin: auto auto auto auto;
+            border: 2px solid red;
+            height: 400px;
+            text-align: center;
+            box-sizing: border-box;
+            
+            display: flex;
+            flex-direction: row;
+            align-items: space-between;
+            
         }
     </style>
 
@@ -76,12 +102,12 @@
             });
         }
 
-        window.deleteMember = async function(id) {
+        window.deleteMember = async function (id) {
             await deleteDoc(doc(db, "members", id)); // 문서 삭제
             document.getElementById(id).remove(); // 카드 삭제
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             loadMembers();
         });
     </script>
@@ -89,7 +115,9 @@
 </head>
 
 <body>
-    <div id="card" class="card" style="width: 18rem;">
+    <div class="cardspace">
+        <div id="card" class="card" style="width: 24 rem;"></div>
+    </div>
 
     </div>
 </body>
