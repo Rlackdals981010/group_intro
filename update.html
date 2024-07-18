@@ -21,6 +21,27 @@
         * {
             font-family: "Gowun Dodum", sans-serif;
         }
+        body {
+            margin: 0;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card{
+            width: 500px;
+            display: flex;            
+            align-items: space-between;
+            text-align: center;
+            background-color: white;
+            justify-content: center;
+
+
+        }
+
+
     </style>
 
     <script type="module">
@@ -91,28 +112,31 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <h2>멤버 정보 업데이트</h2>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">이름</label>
-                <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="blog" class="form-label">블로그 URL</label>
-                <input type="text" class="form-control" id="blog" required>
-            </div>
-            <div class="mb-3">
-                <label for="mbti" class="form-label">MBTI</label>
-                <input type="text" class="form-control" id="mbti" required>
-            </div>
-            <div class="mb-3">
-                <label for="tmi" class="form-label">TMI</label>
-                <input type="text" class="form-control" id="tmi" required>
-            </div>
-            <button id="postingbtn" type="submit" class="btn btn-primary">업데이트</button>
-        </form>
+    <div class="card">
+        <div class="container mt-4">
+            <h2>멤버 정보 업데이트</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">이름</label>
+                    <input class="name_box" type="text" class="form-control" id="name" required style="width: 15rem;">
+                </div>
+                <div class="mb-3">
+                    <label for="blog" class="form-label">블로그 URL</label>
+                    <input class="blog_box" type="text" class="form-control" id="blog" required style="width: 15rem;">
+                </div>
+                <div class="mb-3">
+                    <label for="mbti" class="form-label">MBTI</label>
+                    <input class="mbti_box" type="text" class="form-control" id="mbti" required style="width: 15rem;">
+                </div>
+                <div class="mb-3">
+                    <label for="tmi" class="form-label">TMI</label>
+                    <input class="tmi_box" type="text" class="form-control" id="tmi" required style="width: 15rem;">
+                </div>
+                <button id="postingbtn" type="submit" class="btn btn-primary">업데이트</button>
+            </form>
+        </div>
     </div>
+    
 </body>
 
 </html>
