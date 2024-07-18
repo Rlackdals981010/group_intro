@@ -68,4 +68,4 @@ Content-Type: application/json
 }
 ```
  
- 이런 형태로 구현을 진행하면 된다.
+ 이런 형태로 작성하면 된다.
